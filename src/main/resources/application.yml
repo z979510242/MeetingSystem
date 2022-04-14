@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/roomorder?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+logging:
+  level:
+    csu:
+      software:
+        meetingsystem:
+          mapper: debug
+server:
+  port: 8888
