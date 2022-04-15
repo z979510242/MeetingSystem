@@ -24,9 +24,9 @@ public class JwtAuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
-        // 从请求头中取出 token  这里需要和前端约定好把jwt放到请求头一个叫token的地方
+
         String token = httpServletRequest.getHeader("Authorization");
-        // 如果不是映射到方法直接通过
+
         if (!(object instanceof HandlerMethod)) {
             return true;
         }
@@ -35,7 +35,7 @@ public class JwtAuthenticationInterceptor implements HandlerInterceptor {
         System.out.println(object.toString());
         //检查是否有passToken注释，有则跳过认证
         if (method.isAnnotationPresent(PassToken.class)) {
-//            System.out.println("hello!!!!!!!!!!!!!!!!!!!!!!");
+
             PassToken passToken = method.getAnnotation(PassToken.class);
             if (passToken.required()) {
                 return true;
@@ -47,14 +47,14 @@ public class JwtAuthenticationInterceptor implements HandlerInterceptor {
             // 执行认证
             if (token == null) {
                 System.out.println("token null");
-                //这里其实是登录失效,没token了   这个错误也是我自定义的，读者需要自己修改
+
                 throw new SignatureException("token error");
             }
 
             // 获取 token 中的 user Name
             String userId = JwtUtils.getAudience(token);
 
-            //找找看是否有这个user   因为我们需要检查用户是否存在，读者可以自行修改逻辑
+            //找找看是否有这个user
             User user_1 = new User();
             user_1.setId(Integer.parseInt(userId));
             User user = accountService.selectUser(user_1);
