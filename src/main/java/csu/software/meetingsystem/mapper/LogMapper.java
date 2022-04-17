@@ -20,6 +20,9 @@ public interface LogMapper {
     @Select("select * from log where userId = #{id} order by date desc, log desc")
      List<Log> selectLogsByUserId(int id);
 
+    @Select("select * from log where userId = #{userId} and date = #{date} order by log desc")
+    List<Log> selectLogsByUserIdAndDate(Log log);
+
     @Select("select * from log where date = #{date}")
      List<Log> selectLogsByDate(Date date);
 

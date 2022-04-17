@@ -63,6 +63,16 @@ public class LogController {
         log.setRoomId(roomId);
         return logService.selectLogsByRoomIdAndDate(log);
     }
+    @GetMapping("/UserIdAndDate/")
+    public List<Log> selectLogsByUserIdAndDate(@RequestParam Integer userId, @RequestParam Long date) {
+        System.out.println(userId);
+        System.out.println(date);
+        Log log = new Log();
+        Date date1 = new Date(date);
+        log.setDate(date1);
+        log.setUserId(userId);
+        return logService.selectLogsByUserIdAndDate(log);
+    }
 
 
 

@@ -37,6 +37,9 @@ public class LogService {
     public List<Log> selectLogs(Log log){
         return logMapper.selectLogsByRoomId(log);
     }
+    public List<Log> selectLogsByUserIdAndDate(Log log){
+        return logMapper.selectLogsByUserIdAndDate(log);
+    }
     public Log selectLog(int id){
         return logMapper.selectLog(id);
     }
