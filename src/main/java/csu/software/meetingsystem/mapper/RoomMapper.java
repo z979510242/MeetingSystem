@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface RoomMapper {
 
-    @Insert("insert into room(room, storey, floor, campus, type, capacity) " +
+    @Insert("insert into room(room, storey, floor, campus, type, capacity , record) " +
             "values (#{room}, #{storey}, #{floor}, #{campus}, #{type}, #{capacity} , #{record})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insertRoom(Room room);
