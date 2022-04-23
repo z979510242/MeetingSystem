@@ -26,7 +26,7 @@ public class RoomController {
 
     @GetMapping("/judge/")
     public Log judgeRoomOrder(@RequestParam Integer roomId, @RequestParam Long date, @RequestParam Integer log ){
-        System.out.println("judge");
+
         Room room = new Room();
         room.setId(roomId);
         Date date1 = new Date(date);
@@ -91,7 +91,7 @@ public class RoomController {
     @PostMapping("/")
     public Object createRoom(@RequestBody Room room) {
         if (roomService.findRoomAcc(room) == null){
-            System.out.println(roomService.findRoom(room));
+
             roomService.createRoom(room);
             return roomService.findRoom(room);
         }

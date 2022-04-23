@@ -63,7 +63,7 @@ public class LogService {
 
     public Integer countTimesByUserIdAndLog(Log log){
         List<Log> logs = logMapper.selectLogsByUserIdAndLog(log);
-//        System.out.println(log.getDate().getMonth());
+
         String weekday = dateToWeekUtil(log.getDate().toString());
         Date pastDate = subtractDays(log.getDate(), 60);
         long seconds = pastDate.getTime();

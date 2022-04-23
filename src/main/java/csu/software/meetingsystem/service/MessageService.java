@@ -31,7 +31,7 @@ public class MessageService {
         return  messageMapper.insertMessage(message);
     }
     public boolean deleteMessage(Message message){
-        System.out.println("here");
+
         boolean b = messageMapper.deleteMessage(message);
         System.out.println(b);
         return b;

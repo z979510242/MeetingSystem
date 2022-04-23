@@ -66,9 +66,8 @@ public class MessageController {
             message.setId(id);
 
             boolean status = messageService.deleteMessage(message);
-            System.out.println("here");
 
-            System.out.println(status);
+
             if (status) {
                 return new ResponseEntity<>(new CustomResponse("Delete message "+id+" successful",
                         HttpStatus.OK), HttpStatus.OK);

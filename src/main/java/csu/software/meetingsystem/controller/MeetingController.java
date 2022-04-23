@@ -196,7 +196,7 @@ public class MeetingController {
         log.setLog(time);
 //        Date date = new Date(System.currentTimeMillis());
 //        meeting.setDate(date);
-//        System.out.println(date);
+
         logService.insertLog(log);
         return meetingService.insertMeeting(meeting);
     }

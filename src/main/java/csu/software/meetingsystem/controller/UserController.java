@@ -32,14 +32,14 @@ public class UserController {
     @GetMapping("/me")
     public User getCurrentUser(HttpServletRequest req) {
         String id = (String) req.getAttribute("id");
-        System.out.println(id);
+
         return getUser(Integer.parseInt(id));
     }
 
     @PassToken
     @PostMapping("/login")
     public Object login(@RequestBody User user){
-        System.out.println("login");
+
         User loginUser = userService.login(user);
         if (loginUser == null) {
             CustomResponse customResponse = new CustomResponse();
@@ -104,7 +104,7 @@ public class UserController {
     }
     @PatchMapping("/")
     public Object updateUser(@RequestBody User user){
-        System.out.println(user.getPassword());
+
         ApiError apiError = new ApiError(ZonedDateTime.now(ZoneId.of("Z")),
                 "赋予权限失败！请重新选择填写",
                 HttpStatus.BAD_REQUEST);
@@ -113,7 +113,7 @@ public class UserController {
         if (user.getPassword() == null || user.getPassword().equals("")){
             user1=userService.selectUser(user);
             user.setPassword(user1.getPassword());
-            System.out.println(user1.getPassword());
+
         }
         if(user.getPost().equals("admin")){
             user.setPriority(3);

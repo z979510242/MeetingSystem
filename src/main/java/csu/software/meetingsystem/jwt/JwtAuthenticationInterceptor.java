@@ -32,7 +32,7 @@ public class JwtAuthenticationInterceptor implements HandlerInterceptor {
         }
         HandlerMethod handlerMethod = (HandlerMethod) object;
         Method method = handlerMethod.getMethod();
-        System.out.println(object.toString());
+//        System.out.println(object.toString());
         //检查是否有passToken注释，有则跳过认证
         if (method.isAnnotationPresent(PassToken.class)) {
 
@@ -43,10 +43,10 @@ public class JwtAuthenticationInterceptor implements HandlerInterceptor {
         }
         //默认全部检查
         else {
-            System.out.println("被jwt拦截需要验证");
+//            System.out.println("被jwt拦截需要验证");
             // 执行认证
             if (token == null) {
-                System.out.println("token null");
+//                System.out.println("token null");
 
                 throw new SignatureException("token error");
             }
@@ -60,7 +60,7 @@ public class JwtAuthenticationInterceptor implements HandlerInterceptor {
             User user = accountService.selectUser(user_1);
 
             if (user == null) {
-                System.out.println("user null");
+//                System.out.println("user null");
                 //这个错误也是我自定义的
                 throw new Exception();
             }

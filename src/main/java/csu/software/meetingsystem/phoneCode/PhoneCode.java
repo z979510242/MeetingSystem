@@ -44,9 +44,9 @@ public class PhoneCode {
         /**
          * 进行正则关系校验
          */
-        System.out.println(mobile);
+//        System.out.println(mobile);
         if (mobile == null || mobile == "") {
-            System.out.println("手机号为空");
+//            System.out.println("手机号为空");
             return "";
         }
         /**
@@ -99,11 +99,11 @@ public class PhoneCode {
             if (sendSmsResponse.getCode() != null
                     && sendSmsResponse.getCode().equals("OK")) {
                 // 请求成功
-                System.out.println("获取验证码成功！！！");
+//                System.out.println("获取验证码成功！！！");
             } else {
 //如果验证码出错，会输出错误码告诉你具体原因
-                System.out.println(sendSmsResponse.getCode());
-                System.out.println("获取验证码失败...");
+//                System.out.println(sendSmsResponse.getCode());
+//                System.out.println("获取验证码失败...");
             }
         } catch (ClientException e) {
             e.printStackTrace();

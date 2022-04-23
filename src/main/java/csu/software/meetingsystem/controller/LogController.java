@@ -65,8 +65,7 @@ public class LogController {
     }
     @GetMapping("/UserIdAndDate/")
     public List<Log> selectLogsByUserIdAndDate(@RequestParam Integer userId, @RequestParam Long date) {
-        System.out.println(userId);
-        System.out.println(date);
+
         Log log = new Log();
         Date date1 = new Date(date);
         log.setDate(date1);
@@ -163,7 +162,7 @@ public class LogController {
         int times = logService.countTimesByUserIdAndLog(log);
         if (times <=6){
             Room room = new Room();
-            System.out.println(log.getDate());
+
             room.setId(log.getRoomId());
             Log log1 = roomService.judgeRoomOrder(room, log.getDate(), log.getLog());
             if (log1 == null) {
@@ -202,9 +201,7 @@ public class LogController {
         user.setId(log1.getUserId());
         User orderUser = userService.selectUser(user);
         //tel 通知
-        System.out.println(orderUser.getId());
-        System.out.println(orderUser.getName());
-        System.out.println(orderUser.getTel());
+
 
         logService.updateLog(log);
         return logService.selectLog(log.getId());
