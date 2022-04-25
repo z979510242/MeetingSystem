@@ -15,36 +15,25 @@ import java.util.Date;
 
 
 public class JwtUtils {
-    /**
-     签发对象：这个用户的id
-     签发时间：现在
-     有效时间：300分钟
-     载荷内容：暂时设计为：这个人的名字，这个人的昵称
-     加密密钥：这个人的id加上一串字符串
-     */
+
     public static String createToken(String userId, String userName) {
 
         Calendar nowTime = Calendar.getInstance();
         nowTime.add(Calendar.MINUTE,300);
         Date expiresDate = nowTime.getTime();
 
-        return JWT.create().withAudience(userId)   //签发对象
-                .withIssuedAt(new Date())    //发行时间
-                .withExpiresAt(expiresDate)  //有效时间
-                .withClaim("userName", userName)    //载荷，随便写几个都可以
-//                .withClaim("realName", realName)
-                .sign(Algorithm.HMAC256(userId+"HelloLehr"));   //加密
+        return JWT.create().withAudience(userId)
+                .withIssuedAt(new Date())
+                .withExpiresAt(expiresDate)
+                .withClaim("userName", userName)
+                .sign(Algorithm.HMAC256(userId+"MeetingOrder"));   //加密
     }
 
-    /**
-     * 检验合法性，其中secret参数就应该传入的是用户的id
-     * @param token
-     * @throws
-     */
+
     public static void verifyToken(String token, String secret) throws Exception {
         DecodedJWT jwt = null;
         try {
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(secret+"HelloLehr")).build();
+            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(secret+"MeetingOrder")).build();
             jwt = verifier.verify(token);
         } catch (Exception e) {
             //效验失败
@@ -53,9 +42,6 @@ public class JwtUtils {
         }
     }
 
-    /**
-     * 获取签发对象
-     */
     public static String getAudience(String token) throws Exception {
         String audience = null;
         try {
@@ -68,9 +54,6 @@ public class JwtUtils {
     }
 
 
-    /**
-     * 通过载荷名字获取载荷的值
-     */
     public static Claim getClaimByName(String token, String name){
         return JWT.decode(token).getClaim(name);
     }

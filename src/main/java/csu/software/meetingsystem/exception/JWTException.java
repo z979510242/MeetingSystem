@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 
 public class JWTException extends Exception {
     private HttpStatus httpStatus;
-//    private String message;
 
     public JWTException(String message, HttpStatus httpStatus) {
         super(message);

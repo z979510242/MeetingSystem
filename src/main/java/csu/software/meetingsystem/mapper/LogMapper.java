@@ -59,5 +59,4 @@ public interface LogMapper {
     @Delete("DELETE FROM log")
     boolean clearLogs();
 
-//    List<Log> selectLogByDateAndRoomId(Log log);
 }

@@ -21,10 +21,6 @@ public class MessageController {
     @Autowired
     MessageService messageService;
 
-//    @GetMapping("/")
-//    public List<Message> selectAllMessages(){
-//        return messageService.selectAllMessages();
-//    }
     @GetMapping("/")
     public List<Message> selectMessages(@RequestParam(required=false) Long date, @RequestParam(required=false) Integer id){
 
@@ -39,10 +35,7 @@ public class MessageController {
         }
         return messageService.selectAllMessages();
     }
-//    @PostMapping("/{selectMessageById}")
-//    public Message selectMessageById(@PathVariable(value = "selectMessageById")int id){
-//        return messageService.selectMessageById(id);
-//    }
+
     @PatchMapping("/update/")
     public boolean updateMessage(@RequestBody Message message){
         Message m = messageService.selectMessageById(message.getId());
@@ -56,8 +49,7 @@ public class MessageController {
         return  messageService.insertMessage(message);
     }
 
-//    @DeleteMapping("/")
-//    public ResponseEntity deleteMessage (@RequestBody Message message) {
+
     @DeleteMapping("/{deleteMessage}")
     public ResponseEntity deleteMessage (@PathVariable(value = "deleteMessage") Integer id) {
 

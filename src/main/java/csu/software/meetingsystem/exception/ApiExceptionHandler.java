@@ -14,13 +14,13 @@ import java.time.ZonedDateTime;
 public class ApiExceptionHandler {
     @ExceptionHandler(SignatureException.class)
     public ResponseEntity<Object> handleSignatureException(SignatureException e) {
-        // create payload containing exception details
+
         ApiError apiException = new ApiError(
                 ZonedDateTime.now(ZoneId.of("Z")),
                 e.getMessage(),
                 HttpStatus.BAD_REQUEST
                 );
-        // return response entity
+
         return new ResponseEntity<>(apiException, HttpStatus.BAD_REQUEST);
     }
 

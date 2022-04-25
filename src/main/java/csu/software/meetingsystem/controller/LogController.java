@@ -73,8 +73,6 @@ public class LogController {
         return logService.selectLogsByUserIdAndDate(log);
     }
 
-
-
     @DeleteMapping("/")
     public ResponseEntity deleteLogByThreeParams(@RequestParam Integer roomId, @RequestParam Long date, @RequestParam Integer log) {
         Room room = new Room();
@@ -85,7 +83,6 @@ public class LogController {
             try {
                 boolean status = logService.deleteLog(log1);
                 if (status) {
-//                return CustomResponse.build("Delete room "+id+" successful", HttpStatus.OK);
                     return new ResponseEntity<>(new CustomResponse("Delete log " + log1.getId() + " successful",
                             HttpStatus.OK), HttpStatus.OK);
                 }
@@ -108,7 +105,6 @@ public class LogController {
         try {
             boolean status = logService.deleteLog(log);
             if (status) {
-//                return CustomResponse.build("Delete room "+id+" successful", HttpStatus.OK);
                 return new ResponseEntity<>(new CustomResponse("Delete log " + log.getId() + " successful",
                         HttpStatus.OK), HttpStatus.OK);
             }
@@ -207,9 +203,4 @@ public class LogController {
         return logService.selectLog(log.getId());
     }
 
-//    @DeleteMapping("/")
-//    public List<Log> clearLogs(){
-//        logService.clearLogs();
-//        return logService.selectAllLogs();
-//    }
 }
